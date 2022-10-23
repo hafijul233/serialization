@@ -21,6 +21,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::name('eloquent')
+    ->prefix('eloquent')
+    ->group(function () {
+    Route::get('users', function () {
+
+        return User::with('roles')->paginate();
+
+    })->name('users.index');
+
+    Route::get('users/{user}', function (User $user) {
+
+        return (string)$user;
+
+    })->name('users.show');
+
+});
+
+Route::group(['prefix' => 'resources'], function () {
+    Route::get('users', function () {
+
+        return UserResource::collection(User::paginate());
+
+    })->name('users.index');
+
+    Route::get('users/{user}', function (User $user) {
+
+        return new UserResource($user);
+
+    })->name('users.show');
+});
+
 Route::get('users', function () {
 
     return UserResource::collection(User::paginate());

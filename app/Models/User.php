@@ -31,7 +31,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+/*        'email_verified_at',
+        'created_at',
+        'updated_at'*/
     ];
+
 
     /**
      * The attributes that should be cast.
@@ -41,6 +45,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*protected $appends = ['verified', 'joined_at', 'photo'];
+
+    public function getVerifiedAttribute()
+    {
+        return !is_null($this->email_verified_at);
+    }
+
+    public function getJoinedAtAttribute()
+    {
+        return $this->created_at->format('r');
+    }
+
+    public function getPhotoAttribute()
+    {
+        return asset('public/favicon.ico');
+    }*/
 
     public function roles()
     {
