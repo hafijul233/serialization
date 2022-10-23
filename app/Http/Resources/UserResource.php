@@ -57,9 +57,15 @@ class UserResource extends JsonResource
      */
     public function withResponse($request, $response)
     {
-        $response->header('Server', 'Apache/2.24')
+        $response->header('Server', 'Apache/2.24', true)
+            ->header('Server', 'gws')
+            ->header('Powered By', 'Django')
             ->header('x-azure-ref', '0MYlVYwAAAAAhYVwQt6bPQKFFVwQsQL80U0lOMzBFREdFMDIxNABlMWRmMDcwYS1hZTQ0LTRjMGItYTU0Yi1jNDkzODA0ZTRkOWY=')
-            ->header('X-Powered-by', 'Express')
-            ->header('x-fastly-request-id', '37f118464aab362426d143b511a575e82e3bd6b1');
+            ->header('X-Powered-by', 'Express', true)
+            ->header('x-fastly-request-id', '37f118464aab362426d143b511a575e82e3bd6b1')
+            ->header('akamai-grn','0.444a3917.1666550693.1176f8ee')
+            ->header('x-akamai-transformed', '9 - 0 pmb=mTOE,2mRUM,3')
+
+        ;
     }
 }
